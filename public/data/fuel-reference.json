@@ -1,0 +1,42 @@
+{
+  "source": {
+    "name": "ANP — Síntese Semanal de Preços dos Combustíveis, edição 42/2026",
+    "publisher": "Agência Nacional do Petróleo, Gás Natural e Biocombustíveis (ANP)",
+    "url": "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arq-sintese-semanal/2026/sintese-precos-42.pdf",
+    "weekStart": "2026-10-11",
+    "weekEnd": "2026-10-17",
+    "basis": "Preço médio de revenda na capital de cada UF (R$/litro): gasolina C comum, etanol hidratado e óleo diesel B S10. A síntese publica preços por capital, não a média estadual.",
+    "update": "manual",
+    "transcribedAt": "2026-10-26"
+  },
+  "national": { "gasolina": 6.53, "etanol": 4.11, "diesel": 7.34 },
+  "prices": {
+    "AC": { "capital": "Rio Branco", "gasolina": 7.27, "etanol": 4.82, "diesel": 8.02 },
+    "AL": { "capital": "Maceió", "gasolina": 6.65, "etanol": 4.94, "diesel": 7.26 },
+    "AP": { "capital": "Macapá", "gasolina": 6.49, "etanol": 5.81, "diesel": 7.24 },
+    "AM": { "capital": "Manaus", "gasolina": 7.28, "etanol": 5.25, "diesel": 7.29 },
+    "BA": { "capital": "Salvador", "gasolina": 6.65, "etanol": 4.6, "diesel": 7.78 },
+    "CE": { "capital": "Fortaleza", "gasolina": 6.98, "etanol": 4.94, "diesel": 7.1 },
+    "DF": { "capital": "Brasília", "gasolina": 6.64, "etanol": 4.48, "diesel": 7.44 },
+    "ES": { "capital": "Vitória", "gasolina": 6.18, "etanol": 4.54, "diesel": 6.84 },
+    "GO": { "capital": "Goiânia", "gasolina": 6.61, "etanol": 4.0, "diesel": 7.28 },
+    "MA": { "capital": "São Luís", "gasolina": 6.45, "etanol": 4.8, "diesel": 7.39 },
+    "MT": { "capital": "Cuiabá", "gasolina": 7.09, "etanol": 4.22, "diesel": 7.74 },
+    "MS": { "capital": "Campo Grande", "gasolina": 6.27, "etanol": 3.93, "diesel": 7.3 },
+    "MG": { "capital": "Belo Horizonte", "gasolina": 6.41, "etanol": 4.38, "diesel": 6.89 },
+    "PA": { "capital": "Belém", "gasolina": 6.39, "etanol": 4.31, "diesel": 7.31 },
+    "PB": { "capital": "João Pessoa", "gasolina": 6.29, "etanol": 4.47, "diesel": 7.15 },
+    "PR": { "capital": "Curitiba", "gasolina": 6.78, "etanol": 4.64, "diesel": 7.29 },
+    "PE": { "capital": "Recife", "gasolina": 6.97, "etanol": 4.96, "diesel": 7.17 },
+    "PI": { "capital": "Teresina", "gasolina": 6.8, "etanol": 4.83, "diesel": 7.76 },
+    "RJ": { "capital": "Rio de Janeiro", "gasolina": 6.53, "etanol": 4.74, "diesel": 7.08 },
+    "RN": { "capital": "Natal", "gasolina": 6.38, "etanol": 4.83, "diesel": 7.42 },
+    "RS": { "capital": "Porto Alegre", "gasolina": 5.96, "etanol": 4.44, "diesel": 7.16 },
+    "RO": { "capital": "Porto Velho", "gasolina": 7.49, "etanol": 5.05, "diesel": 7.44 },
+    "RR": { "capital": "Boa Vista", "gasolina": 7.56, "etanol": 5.38, "diesel": 7.52 },
+    "SC": { "capital": "Florianópolis", "gasolina": 6.7, "etanol": 4.71, "diesel": 7.39 },
+    "SP": { "capital": "São Paulo", "gasolina": 6.34, "etanol": 3.91, "diesel": 7.24 },
+    "SE": { "capital": "Aracaju", "gasolina": 6.94, "etanol": 5.25, "diesel": 7.39 },
+    "TO": { "capital": "Palmas", "gasolina": 6.98, "etanol": 5.1, "diesel": 7.45 }
+  }
+}

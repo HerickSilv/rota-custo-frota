@@ -1,0 +1,11 @@
+node_modules
+dist
+*.local
+.DS_Store
+.vite
+coverage
+# estado gerado pelas ferramentas de design (o DESIGN.md e design.json são versionados)
+.impeccable/mocks
+.impeccable/review
+.impeccable/build
+.impeccable/live

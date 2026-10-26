@@ -1,0 +1,215 @@
+@import 'tailwindcss';
+
+/*
+ * Mundo visual: quadro de horários de rodoviária (painel "asfalto") sobre mapa de dia.
+ * Painel sempre escuro por decisão de design; o mapa é claro para a rota colorida se destacar.
+ */
+@theme {
+  --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Barlow Condensed', 'Arial Narrow', 'Roboto Condensed', sans-serif;
+
+  --color-asphalt-950: #0d1115;
+  --color-asphalt-900: #12171c;
+  --color-asphalt-850: #181f26;
+  --color-asphalt-800: #1f2830;
+  --color-asphalt-700: #2b3641;
+  --color-asphalt-600: #3b4957;
+  --color-asphalt-400: #7f8e9b;
+  --color-asphalt-300: #9ba9b5;
+  --color-asphalt-100: #e7ecf0;
+
+  --color-sign: #2563eb;
+  --color-sign-hover: #1d4fd0;
+  --color-sign-soft: #8fb6ff;
+
+  --color-ok: #22b573;
+  --color-attention: #f4a100;
+  --color-severe: #f0444b;
+  --color-unknown: #8795a1;
+
+  --radius-ui: 6px;
+  --shadow-panel: 0 8px 28px rgb(8 12 16 / 0.35), 0 1px 2px rgb(8 12 16 / 0.4);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-asphalt-950);
+    color: var(--color-asphalt-100);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  /* Superfícies do navegador que também carregam o design */
+  ::selection {
+    background: var(--color-sign);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-sign-soft);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  .panel-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-asphalt-600) transparent;
+  }
+  .panel-scroll::-webkit-scrollbar {
+    width: 10px;
+  }
+  .panel-scroll::-webkit-scrollbar-thumb {
+    background: var(--color-asphalt-600);
+    border-radius: 10px;
+    border: 3px solid var(--color-asphalt-900);
+  }
+
+  input,
+  select,
+  button {
+    font: inherit;
+  }
+
+  input[type='number']::-webkit-inner-spin-button {
+    appearance: none;
+  }
+
+  ::placeholder {
+    color: var(--color-asphalt-400);
+  }
+
+  input {
+    caret-color: var(--color-sign-soft);
+  }
+
+  aside {
+    color-scheme: dark;
+  }
+}
+
+@layer components {
+  .num {
+    font-family: var(--font-display);
+    font-variant-numeric: tabular-nums lining-nums;
+    letter-spacing: 0.005em;
+  }
+
+  .field {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    background: var(--color-asphalt-850);
+    border: 1px solid var(--color-asphalt-700);
+    border-radius: var(--radius-ui);
+    color: var(--color-asphalt-100);
+    transition: border-color 120ms, background-color 120ms;
+  }
+  .field:hover {
+    border-color: var(--color-asphalt-600);
+  }
+  .field:focus-visible {
+    border-color: var(--color-sign-soft);
+    outline-offset: 0;
+  }
+  .field[aria-invalid='true'] {
+    border-color: var(--color-severe);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 18px;
+    border-radius: var(--radius-ui);
+    background: var(--color-sign);
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: background-color 120ms, transform 120ms;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--color-sign-hover);
+  }
+  .btn-primary:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+  .btn-primary:disabled {
+    opacity: 0.6;
+    cursor: progress;
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 32px;
+    padding: 0 10px;
+    border-radius: var(--radius-ui);
+    border: 1px solid var(--color-asphalt-700);
+    color: var(--color-asphalt-100);
+    font-size: 13px;
+    transition: border-color 120ms, background-color 120ms;
+  }
+  .btn-ghost:hover:not(:disabled) {
+    border-color: var(--color-asphalt-400);
+    background: var(--color-asphalt-850);
+  }
+  .btn-ghost:disabled {
+    opacity: 0.5;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-asphalt-100);
+  }
+
+  /* marcadores de origem/destino (elementos DOM do MapLibre) */
+  .pin {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-asphalt-900);
+    color: #fff;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 6px rgb(8 12 16 / 0.45);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .pin[data-kind='destination'] {
+    background: var(--color-sign);
+  }
+
+  .maplibregl-ctrl-attrib {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
